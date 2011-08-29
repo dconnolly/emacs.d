@@ -3,6 +3,11 @@
 ;; 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Make emacs shell stuff slightly nicer.
+(setenv "PAGER" "/bin/cat")
+(setenv "EDITOR" "/usr/bin/emacsclient")
+(server-start)
+
 ;; View column and line numbers by default
 (setq line-number-mode t)
 (setq column-number-mode t)
@@ -42,6 +47,11 @@
 (autoload 'python-mode "python-mode" "Python Mode." t)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; iPython fancy python shell
+;;; requires ipython package to be installed 
+;(require 'ipython)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Flymake and Pyflakes
