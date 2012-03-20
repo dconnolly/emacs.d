@@ -1,3 +1,6 @@
 [submodule "emacs-for-python"]
 	path = emacs-for-python
 	url = git://github.com/gabrielelanaro/emacs-for-python.git
+[submodule "malabar-mode"]
+	path = malabar-mode
+	url = git://github.com/espenhw/malabar-mode.git
