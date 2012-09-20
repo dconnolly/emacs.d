@@ -5,7 +5,7 @@
 ;; Make emacs shell stuff slightly nicer.
 (setenv "PAGER" "/bin/cat")
 (setenv "EDITOR" "/usr/bin/emacsclient")
-(server-start)
+;;(server-start)
 
 ;; View column and line numbers by default
 (setq line-number-mode t)
@@ -39,7 +39,7 @@
 (require 'epy-completion)
 (require 'epy-editing)
 ;(require 'epy-bindings)
-(epy-setup-checker "pyflakes %f")
+(epy-setup-checker "~/.emacs.d/etc/pycheckers.sh %f")
 (setq skeleton-pair nil)
 
 ;; Disable line numbering
