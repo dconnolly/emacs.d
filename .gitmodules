@@ -1,15 +1,3 @@
 [submodule "emacs-for-python"]
 	path = emacs-for-python
 	url = git://github.com/gabrielelanaro/emacs-for-python.git
-[submodule "malabar-mode"]
-	path = malabar-mode
-	url = git://github.com/espenhw/malabar-mode.git
-[submodule "coffee-mode"]
-	path = coffee-mode
-	url = git@github.com:defunkt/coffee-mode
-[submodule "haml-mode"]
-	path = haml-mode
-	url = git://github.com/nex3/haml-mode.git
-[submodule "sass-mode"]
-	path = sass-mode
-	url = git://github.com/nex3/sass-mode.git
