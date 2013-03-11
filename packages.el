@@ -4,20 +4,22 @@
 (require 'package)
 (require 'dash)
 
+(defvar packages
+  '(ace-jump-mode ack-and-a-half ag
+		  elisp-slime-nav exec-path-from-shell expand-region 
+		  flycheck flymake flymake-cursor
+		  gist guru-mode helm helm-projectile
+                  magit magithub melpa
+                  rainbow-mode solarized-theme undo-tree
+                  volatile-highlights yasnippet zenburn-theme)
+  "A list of packages to ensure are installed at launch.")
+
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
 			 ("marmalade" . "http://marmalade-repo.org/packages/")
 			 ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 ;; set package-user-dir to be relative to Prelude install path
 (package-initialize)
-
-(defvar packages
-  '(ace-jump-mode ack-and-a-half elisp-slime-nav exec-path-from-shell
-                  expand-region flycheck gist guru-mode helm helm-projectile
-                  magit magithub melpa
-                  rainbow-mode solarized-theme undo-tree
-                  volatile-highlights yasnippet zenburn-theme)
-  "A list of packages to ensure are installed at launch.")
 
 (defun packages-installed-p ()
   (-all? #'package-installed-p packages))
@@ -46,12 +48,14 @@
   '(("\\.clj\\'" clojure-mode clojure-mode)
     ("\\.coffee\\'" coffee-mode coffee-mode)
     ("\\.css\\'" css-mode css-mode)
+    ("\\.ejs\\'" web-mode web-mode)
     ("\\.erl\\'" erlang erlang-mode)
     ("\\.feature\\'" feature-mode feature-mode)
     ("\\.groovy\\'" groovy-mode groovy-mode)
     ("\\.haml\\'" haml-mode haml-mode)
     ("\\.hs\\'" haskell-mode haskell-mode)
     ("\\.html\\'" web-mode web-mode)
+    ("\\.js\\'" js2-mode js2-mode)
     ("\\.latex\\'" auctex LaTeX-mode)
     ("\\.less\\'" less-css-mode less-css-mode)
     ("\\.lua\\'" lua-mode lua-mode)
@@ -60,6 +64,7 @@
     ("\\.php\\'" php-mode php-mode)
     ("\\.py\\'" python python-mode)
     ("\\.sass\\'" sass-mode sass-mode)
+    ("\\.scss\\'" scss-mode scss-mode)
     ("\\.scala\\'" scala-mode2 scala-mode)
     ("\\.scss\\'" scss-mode scss-mode)
     ("\\.slim\\'" slim-mode slim-mode)
@@ -75,6 +80,7 @@
 ;; so we add them manually if it's already installed
 (when (package-installed-p 'web-mode)
   (add-to-list 'auto-mode-alist '("\\..*html\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.ejs\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
