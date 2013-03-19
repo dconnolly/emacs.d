@@ -1,2 +1,6 @@
 ac-comphist.dat
 auto-save-list
+.sass-cache
+elpa
+semanticdb
+srecode-map.el
