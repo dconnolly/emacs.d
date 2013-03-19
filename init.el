@@ -69,43 +69,11 @@
 ;; https://github.com/defunkt/coffee-mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(require 'coffee-mode)
-(require 'flymake-coffee)
-(add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
-(add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
-(add-hook 'coffee-mode-hook 'flymake-coffee-load)
-
-;;(autoload 'coffee-mode "coffee" "" t)
+(autoload 'coffee-mode "coffee" "" t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; SASS/SCSS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(require 'sass-mode)
-(require 'scss-mode)
-(require 'flymake-sass)
-
-(add-to-list 'auto-mode-alist '("\\.sass$" . sass-mode))
-(add-to-list 'auto-mode-alist '("\\.scss$" . scss-mode))
-
-(setq sass-indent-offset 4)
-
-(add-hook 'sass-mode-hook 'flymake-sass-load)
-(add-hook 'scss-mode-hook 'flymake-sass-load)
-
-(setq scss-compile-at-save nil)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Web Mode 
-;; https://github.com/fxbois/web-mode
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; (require 'web-mode)
-;; (add-to-list 'auto-mode-alist '("\\..*html\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+(autoload 'sass-mode "sass" "" t)
+(autoload 'scss-mode "sass" "" t)
