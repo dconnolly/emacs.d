@@ -5,13 +5,15 @@
 (require 'dash)
 
 (defvar packages
-  '(ace-jump-mode ack-and-a-half ag
-		  elisp-slime-nav exec-path-from-shell expand-region 
-		  flycheck flymake flymake-cursor
-		  gist guru-mode helm helm-projectile
-                  magit magithub melpa
-                  rainbow-mode solarized-theme undo-tree
-                  volatile-highlights yasnippet zenburn-theme)
+  '(ace-jump-mode 
+    ack-and-a-half ag
+    auto-complete
+    elisp-slime-nav exec-path-from-shell expand-region 
+    flycheck flymake flymake-cursor
+    gist guru-mode helm helm-projectile
+    magit magithub melpa
+    rainbow-mode solarized-theme undo-tree
+    volatile-highlights yasnippet zenburn-theme)
   "A list of packages to ensure are installed at launch.")
 
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
@@ -56,7 +58,6 @@
     ("\\.hs\\'" haskell-mode haskell-mode)
     ("\\.html\\'" web-mode web-mode)
     ("\\.js\\'" js2-mode js2-mode)
-    ("\\.java\\'" malabar-mode malabar-mode)
     ("\\.latex\\'" auctex LaTeX-mode)
     ("\\.less\\'" less-css-mode less-css-mode)
     ("\\.lua\\'" lua-mode lua-mode)

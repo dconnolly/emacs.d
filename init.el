@@ -1,8 +1,4 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; DC Emacs Config 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Paths 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -33,16 +29,6 @@
 (setq line-number-mode t)
 (setq column-number-mode t)
 
-;; OSX keybindings
-;; (if (eq system-type 'darwin)
-;;   (setq mac-command-key-is-meta t)
-;; )
-
-;;; Disable tab characters, set default tab spacing to 4 chars wide.
-;; (setq-default indent-tabs-mode nil)
-;; (setq-default tab-width 4)
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Ag (search)
 ;; https://github.com/Wilfred/ag.el
@@ -55,14 +41,14 @@
 ;; https://github.com/gabrielelanaro/emacs-for-python
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(autoload 'python-mode "epy-init" "" t)
+(autoload 'python-mode "py" "" t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; JS2 Mode
+;; JS/JS2 Mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(autoload 'js2-mode "js-module" "" t)
-(add-hook 'js-mode-hook 'flymake-jslint-load)
+(autoload 'js-mode "js" "" t)
+(autoload 'js2-mode "js" "" t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Coffee Mode
