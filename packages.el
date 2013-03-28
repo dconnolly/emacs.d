@@ -9,7 +9,7 @@
     ack-and-a-half ag
     auto-complete
     elisp-slime-nav exec-path-from-shell expand-region 
-    flycheck flymake flymake-cursor
+    flycheck
     gist guru-mode helm helm-projectile
     magit magithub melpa
     rainbow-mode solarized-theme undo-tree
@@ -69,6 +69,8 @@
     ("\\.scala\\'" scala-mode2 scala-mode)
     ("\\.scss\\'" scss-mode scss-mode)
     ("\\.slim\\'" slim-mode slim-mode)
+    ("\\.ssh/config\\'" ssh-config ssh-config-mode)
+    ("\\sshd?_config\\'" ssh-config ssh-config-mode)
     ("\\.yml\\'" yaml-mode yaml-mode)))
 
 ;; markdown-mode doesn't have autoloads for the auto-mode-alist
