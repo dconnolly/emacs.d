@@ -3,15 +3,17 @@
 ;;; Commentary:
 
 ;;; Code:
-
 (message "PY")
-;; TODO: Replace all emacs-for-python shit with installable packages until 
 
-;; (require 'epy-init)
+(ensure-module-deps '(elpy))
+(package-initialize)
+(elpy-enable)
 
-;;; Disable tab characters, set default tab spacing to 4 chars wide.
-;; (setq-default indent-tabs-mode nil)
-;; (setq-default tab-width 4)
+;; Disable tab characters, set default tab spacing to 4 chars wide.
+;; This is the default in init.el already.
+;; (setq indent-tabs-mode nil)
+;; (setq tab-width 4)
+(setq python-indent 4)
 
 (provide 'py)
 ;;; py.el ends here
