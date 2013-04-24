@@ -34,12 +34,22 @@
 (setq line-number-mode t)
 (setq column-number-mode t)
 
+;; No tabs, tab inserts 4 spaces by default
+(setq indent-tabs-mode nil)
+(setq tab-width 4)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Whitespace Mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; (setq whitespace-style
+;;       '(empty indentation trailing space-after-tab space-before-tab))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Flycheck
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-hook 'prog-mode-hook 'flycheck-mode)
-(add-hook 'text-mode-hook 'flycheck-mode)
+(add-hook 'after-init-hook 'global-flycheck-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Autocomplete
@@ -68,8 +78,8 @@
 ;; JS/JS2 Mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(autoload 'js-mode "js" "" t)
-(autoload 'js2-mode "js" "" t)
+(add-hook 'js-mode-hook (lambda () (require 'js)))
+(add-hook 'js-mode-hook (lambda () (require 'javascript)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Coffee Mode
