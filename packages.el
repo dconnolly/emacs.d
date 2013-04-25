@@ -1,14 +1,17 @@
 ;;; packages.el --- default package selection and config.
 
 ;;; Code:
+(require 'cl-lib)
 (require 'package)
-(require 'dash)
+
+(package-initialize)
 
 (defvar packages
-  '(ace-jump-mode 
+  '(ace-jump-mode
     ack-and-a-half ag
     auto-complete
-    elisp-slime-nav exec-path-from-shell expand-region 
+    dash
+    elisp-slime-nav exec-path-from-shell expand-region
     flycheck
     gist guru-mode helm helm-projectile
     magit magithub melpa
@@ -20,31 +23,28 @@
 			 ("marmalade" . "http://marmalade-repo.org/packages/")
 			 ("melpa" . "http://melpa.milkbox.net/packages/")))
 
-;; set package-user-dir to be relative to Prelude install path
-(package-initialize)
-
 (defun packages-installed-p ()
-  (-all? #'package-installed-p packages))
+  (cl-every #'package-installed-p packages))
 
 (defun install-packages ()
+  "Install all packages listed in `packages'."
   (unless (packages-installed-p)
     ;; check for new packages (package versions)
-    (message "%s" "Emacs Prelude is now refreshing its package database...")
+    (message "%s" "Emacs is now refreshing its package database...")
     (package-refresh-contents)
     (message "%s" " done.")
     ;; install the missing packages
-    (-each
-     (-reject #'package-installed-p packages)
-     #'package-install)))
+    (mapc #'package-install
+     (cl-remove-if #'package-installed-p packages))))
 
 (install-packages)
 
 (defmacro auto-install (extension package mode)
   `(add-to-list 'auto-mode-alist
-                `(,extension . (lambda ()
-                                 (unless (package-installed-p ',package)
-                                   (package-install ',package))
-                                 (,mode)))))
+		`(,extension . (lambda ()
+				 (unless (package-installed-p ',package)
+				   (package-install ',package))
+				 (,mode)))))
 
 (defvar auto-install-alist
   '(("\\.clj\\'" clojure-mode clojure-mode)
@@ -90,17 +90,20 @@
   (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode)))
 
-
-(-each auto-install-alist
-  (lambda (entry)
-    (let ((extension (car entry))
-          (package (cadr entry))
-          (mode (cadr (cdr entry))))
-      (unless (package-installed-p package)
-        (auto-install extension package mode)))))
+;; build auto-install mappings
+(mapc
+ (lambda (entry)
+   (let ((extension (car entry))
+	 (package (cadr entry))
+	 (mode (cadr (cdr entry))))
+     (unless (package-installed-p package)
+       (auto-install extension package mode))))
+ auto-install-alist)
 
 (defun ensure-module-deps (packages)
-  (-each (-remove #'package-installed-p packages) #'package-install))
+  "Ensure PACKAGES are installed.
+   Missing packages are installed automatically."
+  (mapc #'package-install (cl-remove-if #'package-installed-p packages)))
 
 (provide 'packages)
 ;;; packages.el ends here
