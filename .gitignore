@@ -4,3 +4,6 @@ auto-save-list
 elpa
 semanticdb
 srecode-map.el
+abbrev_defs
+eproject.lst
+url/
