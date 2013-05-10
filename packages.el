@@ -13,6 +13,7 @@
     dash
     elisp-slime-nav exec-path-from-shell expand-region
     flycheck
+    git-commit-mode
     gist guru-mode helm helm-projectile
     magit magithub melpa
     rainbow-mode solarized-theme undo-tree
