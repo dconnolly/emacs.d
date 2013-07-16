@@ -1,6 +1,9 @@
 ;;; packages.el --- default package selection and config.
 
+;;; Commentary:
+
 ;;; Code:
+
 (require 'cl-lib)
 (require 'package)
 
@@ -25,6 +28,7 @@
 			 ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 (defun packages-installed-p ()
+  "Get all those in 'packages' that have already been installed."
   (cl-every #'package-installed-p packages))
 
 (defun install-packages ()
@@ -41,6 +45,7 @@
 (install-packages)
 
 (defmacro auto-install (extension package mode)
+  "When opening a file with EXTENSION, auto-install PACKAGE and trigger MODE."
   `(add-to-list 'auto-mode-alist
 		`(,extension . (lambda ()
 				 (unless (package-installed-p ',package)
@@ -59,6 +64,7 @@
     ("\\.hs\\'" haskell-mode haskell-mode)
     ("\\.html\\'" web-mode web-mode)
     ("\\.js\\'" js2-mode js2-mode)
+    ("\\.jsp\\'" web-mode web-mode)
     ("\\.latex\\'" auctex LaTeX-mode)
     ("\\.less\\'" less-css-mode less-css-mode)
     ("\\.lua\\'" lua-mode lua-mode)
@@ -102,8 +108,7 @@
  auto-install-alist)
 
 (defun ensure-module-deps (packages)
-  "Ensure PACKAGES are installed.
-   Missing packages are installed automatically."
+  "Ensure PACKAGES are installed.  Missing packages are installed automatically."
   (mapc #'package-install (cl-remove-if #'package-installed-p packages)))
 
 (provide 'packages)
