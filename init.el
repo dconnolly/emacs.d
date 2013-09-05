@@ -11,7 +11,7 @@
 
 ;; Add all top-level subdirectories of .emacs.d to the load path
 (progn (cd "~/.emacs.d")
-  (normal-top-level-add-subdirs-to-load-path))
+       (normal-top-level-add-subdirs-to-load-path))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Packages
@@ -31,18 +31,78 @@
 (unless (server-running-p) (server-start))
 
 ;; View column and line numbers by default
-(setq line-number-mode t)
-(setq column-number-mode t)
+(setq-default line-number-mode t)
+(setq-default column-number-mode t)
 
 ;; No tabs, tab inserts 4 spaces by default
-(setq indent-tabs-mode nil)
-(setq tab-width 4)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Whitespace Mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(require 'whitespace)
+(global-whitespace-mode 1)
+(setq whitespace-display-mappings
+      ;; all numbers are Unicode codepoint in decimal. try
+      ;; (insert-char 182 ) to see it
+      '(
+        (space-mark 32 [183] [46]) ; 32 SPACE, 183 MIDDLE DOT '·', 46 FULL STOP '.'
+        (tab-mark 9 [10230 9] [92 9]) ; 9 TAB, 10230 LONG RIGHTWARDS ARROW '⟶ '
+        (newline-mark 10 [8629 10]) ; 10 LINE FEED, 8629 DOWNWARDS ARROW WITH CORNER LEFTWARDS '↵''
+        ))
+
+(setq whitespace-style (quote
+                        (face
+                         tabs
+                         spaces
+                         trailing
+                         lines-tail
+                         newline
+                         ;;indentation::space
+                         empty
+                         space-mark
+                         tab-mark
+                         newline-mark)))
+
 (add-hook 'before-save-hook 'whitespace-cleanup)
+
+(defvar background-color "black") ;; Black renders as transparent if
+                                  ;; your terminal supports it.
+(defvar foreground-color "gray20")
+(defvar violation-foreground-color "chartreuse1")
+
+(set-face-attribute 'whitespace-space nil
+                    :background background-color
+                    :foreground foreground-color)
+(set-face-attribute 'whitespace-hspace nil
+                    :background background-color
+                    :foreground foreground-color)
+(set-face-attribute 'whitespace-tab nil
+                    :background background-color
+                    :foreground foreground-color)
+(set-face-attribute 'whitespace-newline nil
+                    :background background-color
+                    :foreground foreground-color)
+(set-face-attribute 'whitespace-trailing nil
+                    :background background-color
+                    :foreground violation-foreground-color)
+(set-face-attribute 'whitespace-line nil
+                    :background background-color
+                    :foreground violation-foreground-color)
+(set-face-attribute 'whitespace-space-before-tab nil
+                    :background background-color
+                    :foreground violation-foreground-color)
+(set-face-attribute 'whitespace-indentation nil
+                    :background background-color
+                    :foreground violation-foreground-color)
+(set-face-attribute 'whitespace-empty nil
+                    :background background-color
+                    :foreground violation-foreground-color)
+(set-face-attribute 'whitespace-space-after-tab nil
+                    :background background-color
+                    :foreground violation-foreground-color)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Flycheck
@@ -66,6 +126,13 @@
 
 (require 'ag)
 (setq ag-highlight-search t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; EditConfig
+;; https://github.com/editorconfig/editorconfig-emacs
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require 'editorconfig)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Python Mode
@@ -106,17 +173,23 @@
 
 ;; Allow editing of binary .plist files.
 (add-to-list 'jka-compr-compression-info-list
-	     ["\\.plist$"
-	      "converting text XML to binary plist"
-	      "plutil"
-	      ("-convert" "binary1" "-o" "-" "-")
-	      "converting binary plist to text XML"
-	      "plutil"
-	      ("-convert" "xml1" "-o" "-" "-")
-	      nil nil "bplist"])
+             ["\\.plist$"
+              "converting text XML to binary plist"
+              "plutil"
+              ("-convert" "binary1" "-o" "-" "-")
+              "converting binary plist to text XML"
+              "plutil"
+              ("-convert" "xml1" "-o" "-" "-")
+              nil nil "bplist"])
 
 ;;It is necessary to perform an update!
 (jka-compr-update)
 
 (provide 'init)
 ;;; init.el ends here
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
