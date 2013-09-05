@@ -14,6 +14,7 @@
     ack-and-a-half ag
     auto-complete
     dash
+    editorconfig
     elisp-slime-nav exec-path-from-shell expand-region
     flycheck
     git-commit-mode
