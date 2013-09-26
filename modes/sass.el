@@ -4,7 +4,7 @@
 (require 'scss-mode)
 (require 'flymake-sass)
 
-(setq sass-indent-offset 4)
+;;(setq sass-indent-offset 4)
 
 (add-hook 'sass-mode-hook 'flymake-sass-load)
 (add-hook 'scss-mode-hook 'flymake-sass-load)

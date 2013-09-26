@@ -10,8 +10,8 @@
 ;; Install with sudo npm install -g coffeelint
 
 ;; CoffeeScript uses two spaces.
-(make-local-variable 'tab-width)
-(set 'tab-width 2)
+;; (make-local-variable 'tab-width)
+;; (set 'tab-width 2)
 
 ;; If you don't want your compiled files to be wrapped
 (setq coffee-args-compile '(\"-c\" \"--bare\"))
