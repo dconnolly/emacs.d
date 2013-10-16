@@ -21,6 +21,7 @@
     gist guru-mode helm helm-projectile
     magit magithub melpa
     rainbow-mode solarized-theme undo-tree
+    web-mode
     volatile-highlights yasnippet zenburn-theme)
   "A list of packages to ensure are installed at launch.")
 
@@ -63,7 +64,7 @@
     ("\\.groovy\\'" groovy-mode groovy-mode)
     ("\\.haml\\'" haml-mode haml-mode)
     ("\\.hs\\'" haskell-mode haskell-mode)
-    ("\\.html\\'" web-mode web-mode)
+    ("\\.html?\\'" web-mode web-mode)
     ("\\.js\\'" js2-mode js2-mode)
     ("\\.jsp\\'" web-mode web-mode)
     ("\\.latex\\'" auctex LaTeX-mode)
@@ -71,7 +72,7 @@
     ("\\.lua\\'" lua-mode lua-mode)
     ("\\.markdown\\'" markdown-mode markdown-mode)
     ("\\.md\\'" markdown-mode markdown-mode)
-    ("\\.php\\'" php-mode php-mode)
+    ("\\.php\\'" web-mode web-mode)
     ("\\.py\\'" python python-mode)
     ("\\.sass\\'" sass-mode sass-mode)
     ("\\.scala\\'" scala-mode2 scala-mode)
