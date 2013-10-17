@@ -149,6 +149,7 @@
 
 (add-hook 'js-mode-hook (lambda () (require 'js)))
 (add-hook 'js-mode-hook (lambda () (require 'javascript)))
+(add-to-list 'interpreter-mode-alist '("node" . js2-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Coffee Mode
