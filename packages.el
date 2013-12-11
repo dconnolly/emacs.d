@@ -66,6 +66,7 @@
     ("\\.hs\\'" haskell-mode haskell-mode)
     ("\\.html?\\'" web-mode web-mode)
     ("\\.js\\'" js2-mode js2-mode)
+    ("\\.json\\'" json-mode json-mode)
     ("\\.jsp\\'" web-mode web-mode)
     ("\\.latex\\'" auctex LaTeX-mode)
     ("\\.less\\'" less-css-mode less-css-mode)
