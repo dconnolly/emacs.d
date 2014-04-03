@@ -43,6 +43,8 @@
 ;; https://github.com/editorconfig/editorconfig-emacs
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; This requires the editorconfig core to be installed separately.
+;; brew install editorconfig || apt-get install editorconfig
 (require 'editorconfig)
 (load "editorconfig")
 
