@@ -23,6 +23,9 @@
 ;; Generic
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Disable auto-save, which produces those #* files.
+(setq auto-save-default nil)
+
 ;; Make emacs shell stuff slightly nicer.
 (setenv "PAGER" "/bin/cat")
 (setenv "EDITOR" "/usr/bin/emacsclient")
