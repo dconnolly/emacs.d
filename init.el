@@ -149,8 +149,9 @@
 ;; JS/JS2 Mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-hook 'js-mode-hook (lambda () (require 'javascript)))
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+(add-hook 'js-mode-hook (lambda () (require 'javascript)))
+(add-hook 'js2-mode-hook (lambda () (require 'javascript)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; JSON Mode

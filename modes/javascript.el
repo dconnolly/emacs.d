@@ -6,13 +6,19 @@
 
 (message "JAVASCRIPT")
 
-(ensure-module-deps '(js2-mode flycheck ac-js2))
+;; Requirements:
+;; npm install -g jshint tern
+(ensure-module-deps '(js2-mode flycheck ac-js2 tern tern-auto-complete))
 
-(setq flycheck-jshintrc '.jshintrc')
-(add-hook 'js2-mode-hook 'ac-js2-mode)
+(setq flycheck-jshintrc ".jshintrc")
 
-;; Scan the file for nested code blocks
-(imenu-add-menubar-index)
+(ac-js2-mode t)
+
+(tern-mode t)
+(eval-after-load 'tern
+    '(progn
+         ;;(require 'tern-auto-complete)
+         (tern-ac-setup)))
 
 (provide 'javascript)
 ;;; javascript.el ends here

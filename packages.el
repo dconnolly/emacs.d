@@ -110,9 +110,22 @@
        (auto-install extension package mode))))
  auto-install-alist)
 
+(defun require-package (package)
+  "Install PACKAGE unless already installed."
+  (unless (memq package packages)
+    (add-to-list 'packages package))
+  (unless (package-installed-p package)
+    (package-install package)))
+
+(defun require-packages (packages)
+    "Ensure PACKAGES are installed.  Missing packages are installed automatically."
+    (mapc #'require-package packages))
+
 (defun ensure-module-deps (packages)
   "Ensure PACKAGES are installed.  Missing packages are installed automatically."
   (mapc #'package-install (cl-remove-if #'package-installed-p packages)))
+
+(define-obsolete-function-alias 'ensure-module-deps 'require-packages)
 
 (provide 'packages)
 ;;; packages.el ends here
