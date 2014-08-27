@@ -8,9 +8,7 @@
 
 ;; Requires:
 ;; npm install -g jsonlint js-beautify
-(ensure-module-deps '(json-mode flymake-json web-beautify))
-
-(add-hook 'json-mode-hook 'flymake-json-load)
+(ensure-module-deps '(json-mode flycheck web-beautify))
 
 (add-hook 'before-save-hook 'web-beautify-js-buffer t t)
 

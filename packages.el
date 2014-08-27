@@ -19,7 +19,7 @@
     flycheck
     git-commit-mode
     gist guru-mode helm helm-projectile
-    magit melpa
+    magit
     rainbow-mode solarized-theme undo-tree
     web-mode
     volatile-highlights yasnippet zenburn-theme)

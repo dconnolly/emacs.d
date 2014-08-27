@@ -5,7 +5,7 @@
 ;;; Code:
 (message "PY")
 
-(ensure-module-deps '(elpy))
+(ensure-module-deps '(elpy flycheck))
 (package-initialize)
 (elpy-enable)
 
