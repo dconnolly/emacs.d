@@ -25,9 +25,11 @@
     volatile-highlights yasnippet zenburn-theme)
   "A list of packages to ensure are installed at launch.")
 
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-			 ("marmalade" . "http://marmalade-repo.org/packages/")
-			 ("melpa" . "http://melpa.milkbox.net/packages/")))
+(setq package-archives '(
+                          ("gnu" . "http://elpa.gnu.org/packages/")
+                          ("marmalade" . "http://marmalade-repo.org/packages/")
+                          ("melpa" . "http://melpa.milkbox.net/packages/")
+                          ))
 
 (defun packages-installed-p ()
   "Get all those in 'packages' that have already been installed."
@@ -65,7 +67,7 @@
     ("\\.haml\\'" haml-mode haml-mode)
     ("\\.hs\\'" haskell-mode haskell-mode)
     ("\\.html?\\'" web-mode web-mode)
-    ("\\.js\\'" js2-mode js2-mode)
+    ("\\.js\\'" js3-mode js3-mode)
     ("\\.json\\'" json-mode json-mode)
     ("\\.jsp\\'" web-mode web-mode)
     ("\\.latex\\'" auctex LaTeX-mode)
