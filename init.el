@@ -37,6 +37,9 @@
 (setq-default line-number-mode t)
 (setq-default column-number-mode t)
 
+(global-linum-mode 1)
+(setq linum-format "%d\u2000")
+
 ;; No tabs, tab inserts 4 spaces by default
 ;; (setq-default indent-tabs-mode nil)
 ;; (setq-default tab-width 4)
