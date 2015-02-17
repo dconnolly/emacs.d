@@ -7,7 +7,7 @@
 ;; Paths
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d/lib")
 
 ;; Add all top-level subdirectories of .emacs.d to the load path
 (progn (cd "~/.emacs.d")

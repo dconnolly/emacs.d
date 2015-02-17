@@ -11,24 +11,35 @@
 
 (defvar packages
   '(ace-jump-mode
-    ack-and-a-half ag
-    auto-complete
-    dash
-    editorconfig
-    elisp-slime-nav exec-path-from-shell expand-region
-    flycheck
-    git-commit-mode
-    gist guru-mode helm helm-projectile
-    magit
-    rainbow-mode solarized-theme undo-tree
-    web-mode
-    volatile-highlights yasnippet zenburn-theme)
+     ack-and-a-half
+     ag
+     auto-complete
+     dash
+     editorconfig
+     elisp-slime-nav
+     exec-path-from-shell
+     expand-region
+     flycheck
+     git-commit-mode
+     gist
+     guru-mode
+     helm
+     helm-projectile
+     magit
+     rainbow-mode
+     solarized-theme
+     ssh-config-mode
+     undo-tree
+     web-mode
+     volatile-highlights
+     yasnippet
+     zenburn-theme)
   "A list of packages to ensure are installed at launch.")
 
 (setq package-archives '(
-                          ("gnu" . "http://elpa.gnu.org/packages/")
-                          ("marmalade" . "http://marmalade-repo.org/packages/")
-                          ("melpa" . "http://melpa.milkbox.net/packages/")
+                          ("gnu" . "https://elpa.gnu.org/packages/")
+                          ("marmalade" . "https://marmalade-repo.org/packages/")
+                          ;; ("melpa" . "http://melpa.org/packages/") ;; Not HTTPS, not signed (yet).
                           ))
 
 (defun packages-installed-p ()
@@ -79,7 +90,7 @@
     ("\\.py\\'" python python-mode)
     ("\\.sass\\'" sass-mode sass-mode)
     ("\\.scala\\'" scala-mode2 scala-mode)
-    ("\\.scss\\'" scss-mode scss-mode)
+    ("\\.scss\\'" sass-mode sass-mode)
     ("\\.slim\\'" slim-mode slim-mode)
     ("\\.ssh/config\\'" ssh-config ssh-config-mode)
     ("\\sshd?_config\\'" ssh-config ssh-config-mode)
