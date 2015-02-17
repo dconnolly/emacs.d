@@ -28,7 +28,6 @@
      magit
      rainbow-mode
      solarized-theme
-     ssh-config-mode
      undo-tree
      web-mode
      volatile-highlights
@@ -92,8 +91,8 @@
     ("\\.scala\\'" scala-mode2 scala-mode)
     ("\\.scss\\'" sass-mode sass-mode)
     ("\\.slim\\'" slim-mode slim-mode)
-    ("\\.ssh/config\\'" ssh-config ssh-config-mode)
-    ("\\sshd?_config\\'" ssh-config ssh-config-mode)
+    ;; ("\\.ssh/config\\'" ssh-config-mode ssh-config-mode)
+    ;; ("\\sshd?_config\\'" ssh-config-mode ssh-config-mode)
     ("\\.yml\\'" yaml-mode yaml-mode)))
 
 ;; markdown-mode doesn't have autoloads for the auto-mode-alist
