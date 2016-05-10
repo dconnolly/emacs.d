@@ -38,7 +38,7 @@
 (setq package-archives '(
                           ("gnu" . "https://elpa.gnu.org/packages/")
                           ("marmalade" . "https://marmalade-repo.org/packages/")
-                          ;; ("melpa" . "http://melpa.org/packages/") ;; Not HTTPS, not signed (yet).
+                          ("melpa" . "https://melpa.org/packages/")
                           ))
 
 (defun packages-installed-p ()
