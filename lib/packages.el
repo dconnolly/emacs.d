@@ -20,13 +20,17 @@
      exec-path-from-shell
      expand-region
      flycheck
-     git-commit-mode
+     gitattributes-mode
+     gitconfig-mode
+     git-commit
+     gitignore-mode
      gist
      guru-mode
      helm
      helm-projectile
-     magit
+     ;magit
      rainbow-mode
+     seti-theme
      solarized-theme
      undo-tree
      web-mode
@@ -76,6 +80,7 @@
     ("\\.groovy\\'" groovy-mode groovy-mode)
     ("\\.haml\\'" haml-mode haml-mode)
     ("\\.hs\\'" haskell-mode haskell-mode)
+    ("\\.hbs\\'" web-mode web-mode)
     ("\\.html?\\'" web-mode web-mode)
     ("\\.js\\'" js2-mode js2-mode)
     ("\\.json\\'" js2-mode js2-mode)
@@ -86,8 +91,10 @@
     ("\\.lua\\'" lua-mode lua-mode)
     ("\\.markdown\\'" markdown-mode markdown-mode)
     ("\\.md\\'" markdown-mode markdown-mode)
+    ("\\.go\\'" go-mode go-mode)
     ("\\.php\\'" web-mode web-mode)
     ("\\.py\\'" python python-mode)
+    ("\\.rs\\'" rust-mode rust-mode)
     ("\\.sass\\'" sass-mode sass-mode)
     ("\\.scala\\'" scala-mode2 scala-mode)
     ("\\.scss\\'" sass-mode sass-mode)
@@ -111,6 +118,7 @@
   (add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.hbs\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode)))
 
 ;; build auto-install mappings

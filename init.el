@@ -23,6 +23,8 @@
 ;; Generic
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;(load-theme 'seti t)
+
 ;; Disable auto-save, which produces those #* files.
 (setq auto-save-default nil)
 
@@ -30,8 +32,8 @@
 (setenv "PAGER" "/bin/cat")
 (setenv "EDITOR" "/usr/bin/emacsclient")
 
-(load "server")
-(unless (server-running-p) (server-start))
+;; (require 'server)
+;; (unless (server-running-p) (server-start))
 
 ;; View column and line numbers by default
 (setq-default line-number-mode t)
@@ -53,6 +55,7 @@
 ;; brew install editorconfig || apt-get install editorconfig
 (require 'editorconfig)
 (load "editorconfig")
+(editorconfig-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Rainbow Mode
@@ -92,7 +95,7 @@
                          lines-tail
                          newline
                          ;;indentation::space
-                         empty
+                         ;; empty
                          space-mark
                          tab-mark
                          newline-mark)))
@@ -159,13 +162,20 @@
 (setq ag-highlight-search t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; git-commit
+;; http://melpa.org/#/git-commit
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(global-git-commit-mode t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Python Mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (add-hook 'python-mode-hook (lambda () (require 'py)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; JS/JS2 Mode
+;; JS/JS2/JS3 Mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
@@ -176,7 +186,7 @@
 ;; JSON Mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-hook 'json-mode-hook (lambda () (require 'json-config)))
+;; (add-hook 'json-mode-hook (lambda () (require 'json-config)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Coffee Mode
@@ -189,8 +199,9 @@
 ;; SASS/SCSS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(autoload 'sass-mode "sass" "" t)
-(autoload 'scss-mode "sass" "" t)
+;; (autoload 'sass-mode "sass" "" t)
+;; (autoload 'scss-mode "sass" "" t)
+;;(add-hook 'sass-mode-hook (lambda () (require 'sass)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Java Mode
@@ -203,6 +214,20 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (add-hook 'web-mode-hook (lambda () (require 'web)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Go Mode
+;; https://github.com/dominikh/go-mode.el
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(add-hook 'go-mode-hook (lambda () (require 'go)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; C Mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(add-hook 'c-mode-common-hook (lambda () (require 'c)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; OSX plist bullshit
@@ -224,15 +249,3 @@
 
 (provide 'init)
 ;;; init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(virtualenv-root "~/dev/akamai/git/ptk-selenium-qa/"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
