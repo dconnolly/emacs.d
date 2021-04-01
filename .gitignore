@@ -10,3 +10,4 @@ url/
 *~
 .cask
 .lsp-session-v1
+transient/history.el

@@ -6,7 +6,7 @@
 (message "PY")
 
 (ensure-module-deps '(elpy flycheck))
-(package-initialize)
+;;(package-initialize)
 (elpy-enable)
 
 ;; Disable tab characters, set default tab spacing to 4 chars wide.

@@ -40,9 +40,8 @@
   "A list of packages to ensure are installed at launch.")
 
 (setq package-archives '(
-                          ("gnu" . "https://elpa.gnu.org/packages/")
-                          ("marmalade" . "https://marmalade-repo.org/packages/")
                           ("melpa" . "https://melpa.org/packages/")
+                          ("gnu" . "https://elpa.gnu.org/packages/")
                           ))
 
 (defun packages-installed-p ()
@@ -100,7 +99,8 @@
     ("\\.scss\\'" sass-mode sass-mode)
     ("\\.slim\\'" slim-mode slim-mode)
     ;; ("\\.ssh/config\\'" ssh-config-mode ssh-config-mode)
-    ;; ("\\sshd?_config\\'" ssh-config-mode ssh-config-mode)
+     ;; ("\\sshd?_config\\'" ssh-config-mode ssh-config-mode)
+    ("\\.toml\\'" toml-mode toml-mode)
     ("\\.yml\\'" yaml-mode yaml-mode)))
 
 ;; markdown-mode doesn't have autoloads for the auto-mode-alist

@@ -8,7 +8,7 @@
 
 ;; Requirements:
 ;; npm install -g jshint eslint jscs tern
-(ensure-module-deps '(js2-mode flycheck tern tern-auto-complete jsx-mode))
+(ensure-module-deps '(js2-mode flycheck tern tern-auto-complete jsx-mode rjsx-mode))
 
 '(js2-auto-indent-p t)         ; it's nice for commas to right themselves.
 '(js2-enter-indents-newline t) ; don't need to push tab before typing
