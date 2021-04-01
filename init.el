@@ -1,23 +1,29 @@
-;;; package: --- init.el
+;; package: --- init.el
 ;;; Commentary:
 
 ;;; Code:
+
+(setq warning-suppress-log-types '((package reinitialization)))
+
+(require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el")
+(cask-initialize)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Paths
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-to-list 'load-path "~/.emacs.d/lib")
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+;; (package-initialize)
+
+;; (add-to-list 'load-path "~/.emacs.d/lib")
 
 ;; Add all top-level subdirectories of .emacs.d to the load path
 (progn (cd "~/.emacs.d")
        (normal-top-level-add-subdirs-to-load-path))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Packages
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(require 'packages)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Generic
@@ -43,8 +49,11 @@
 (setq linum-format "%d\u2000")
 
 ;; No tabs, tab inserts 4 spaces by default
-;; (setq-default indent-tabs-mode nil)
-;; (setq-default tab-width 4)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+
+;; M-q paragraph wrap
+(setq-default fill-column 80)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; EditorConfig
@@ -54,7 +63,6 @@
 ;; This requires the editorconfig core to be installed separately.
 ;; brew install editorconfig || apt-get install editorconfig
 (require 'editorconfig)
-(load "editorconfig")
 (editorconfig-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -145,28 +153,16 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Autocomplete
+;; LSP mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-(ac-config-default)
-(global-auto-complete-mode t)
+(require 'lsp-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Ag (search)
-;; https://github.com/Wilfred/ag.el
+;; Company mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(require 'ag)
-(setq ag-highlight-search t)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; git-commit
-;; http://melpa.org/#/git-commit
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(global-git-commit-mode t)
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Python Mode
@@ -189,13 +185,6 @@
 ;; (add-hook 'json-mode-hook (lambda () (require 'json-config)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Coffee Mode
-;; https://github.com/defunkt/coffee-mode
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(add-hook 'coffee-mode-hook (lambda () (require 'coffee)))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; SASS/SCSS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -213,7 +202,7 @@
 ;; Web Mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-hook 'web-mode-hook (lambda () (require 'web)))
+(add-hook 'web-mode-hook (lambda () (require 'web-mode)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Go Mode
@@ -222,12 +211,18 @@
 
 (add-hook 'go-mode-hook (lambda () (require 'go)))
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; C Mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (add-hook 'c-mode-common-hook (lambda () (require 'c)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Rust Mode
+;; https://github.com/rust-lang/rust-mode.el
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(add-hook 'rust-mode-hook (lambda () (require 'rust)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; OSX plist bullshit
@@ -249,3 +244,30 @@
 
 (provide 'init)
 ;;; init.el ends here
+;; (custom-set-variables
+;;  ;; custom-set-variables was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(package-selected-packages
+;;    (quote
+;;     (rust-mode yaml-mode flymake-less less-css-mode markdown-mode web-beautify ## c-mode sass-mode zenburn-theme web-mode volatile-highlights undo-tree tern-auto-complete solarized-theme seti-theme rainbow-mode pyvenv jsx-mode js2-mode highlight-indentation helm-projectile guru-mode go-eldoc gitignore-mode gitconfig-mode gitattributes-mode git-commit gist flycheck expand-region exec-path-from-shell elisp-slime-nav editorconfig coffee-mode ag ack-and-a-half ace-jump-mode))))
+;; (custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  )
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(toml-mode groovy-mode handlebars-mode rjsx-mode yaml-mode c-mode markdown-mode cargo ## cargo-minor-mode flycheck-rust rust-mode zenburn-theme web-mode web-beautify volatile-highlights undo-tree tern-auto-complete solarized-theme seti-theme sass-mode rainbow-mode pyvenv jsx-mode js2-mode highlight-indentation helm-projectile guru-mode go-eldoc gitignore-mode gitconfig-mode gitattributes-mode git-commit gist flymake-less flycheck expand-region exec-path-from-shell elisp-slime-nav editorconfig coffee-mode ag ack-and-a-half ace-jump-mode)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
